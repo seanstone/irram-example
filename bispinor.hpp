@@ -22,6 +22,12 @@ public:
         x[1][0] = iRRAM::COMPLEX(v[1], v[2]);   x[1][1] = v[0] - v[3];
     }
 
+    bispinor(spinor k, spinor l)
+    {
+        x[0][0] = k[0] * l[0]; x[0][1] = k[0] * l[1];
+        x[1][0] = k[1] * l[0]; x[1][1] = k[1] * l[1];
+    }
+
     spinor& operator[](std::size_t idx)       { return x[idx]; }
     const spinor& operator[](std::size_t idx) const { return x[idx]; }
 
