@@ -1,6 +1,10 @@
+CPPFLAGS += -O2
+CXXFLAGS += -std=c++14
+LDLIBS += -liRRAM -lmpfr
+
 build/example: main.cpp *.hpp
 	mkdir -p $(@D)
-	$(CXX) $< -liRRAM -lmpfr -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< $(LDLIBS) -o $@
 
 .PHONY: clean
 clean:
