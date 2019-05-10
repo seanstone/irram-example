@@ -31,4 +31,9 @@ static iRRAM::orstream& operator<<(iRRAM::orstream& os, const spinor& v)
     return os << "[" << v[0] << ", " << v[1] << "]";
 }
 
+static spinor conjugate(const spinor& s)
+{
+    return spinor(conjugate(s[0]), conjugate(s[1])); 
+}
+
 #endif

@@ -40,21 +40,21 @@ void compute()
     cout << p << "\n";
     cout << p.norm() << "\n";
 
-    // vec4 q = lorentz_x(10, p);
-    // cout << q << "\n";
-    // cout << q.norm() << "\n";
-
     bispinor b(p);
     cout << b << "\n";
     cout << b.norm() << "\n";
 
     spinor l(p);
-    cout << l << "\n";
-
-    spinor lt = l;
-    lt[1] = COMPLEX(l[1]._real, -l[1]._imag);
-    cout << lt << "\n";
-    bispinor b1(l, lt);
+    bispinor b1(l, conjugate(l));
     cout << b1 << "\n";
     cout << b1.norm() << "\n";
+
+    vec4 q = lorentz_x(10, p);
+    cout << q << "\n";
+    cout << q.norm() << "\n";
+
+    spinor k(q);
+    bispinor b2(k, conjugate(k));
+    cout << b2 << "\n";
+    cout << b2.norm() << "\n";
 }
