@@ -8,6 +8,8 @@ void compute();
 
 int main(int argc, char **argv)
 {
+    srand(time(NULL));
+
     iRRAM_initialize2(&argc, argv);
     iRRAM::exec(compute);
     iRRAM_finalize();
@@ -17,8 +19,6 @@ int main(int argc, char **argv)
 
 void compute()
 {
-    srand(time(NULL));
-
     vec4 p;
 
     p[1] = 2 * (float)rand()/(float)(RAND_MAX) - 1;
