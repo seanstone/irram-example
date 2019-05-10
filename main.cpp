@@ -1,6 +1,7 @@
 #include <iRRAM/lib.h>
 #include <stdlib.h>
 #include "vec4.hpp"
+#include "bispinor.hpp"
 
 using namespace iRRAM;
 
@@ -18,6 +19,7 @@ int main(int argc, char **argv)
 }
 
 REAL rand1() { return 2 * (float)rand()/(float)(RAND_MAX) - 1; }
+COMPLEX rand1z() { return COMPLEX(rand1(),rand1()); }
 
 vec4 lorentz_x(REAL eta, vec4 p)
 {
@@ -44,4 +46,11 @@ void compute()
     vec4 q = lorentz_x(1, p);
     cout << q << "\n";
     cout << q.norm() << "\n";
+
+    bispinor b;
+    b[0][0] = rand1z();
+    b[0][1] = rand1z();
+    b[1][0] = rand1z();
+    b[1][1] = rand1z();
+    cout << b << "\n";
 }

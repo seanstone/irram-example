@@ -17,7 +17,7 @@ public:
 
 static iRRAM::orstream& operator<<(iRRAM::orstream& os, const vec4& v)
 {
-    return os << "[" << v[0] << ", " << v[1] << ", " << v[2] << ", " << v[3] << "]";
+    return os << "(" << v[0] << ", " << v[1] << ", " << v[2] << ", " << v[3] << ")";
 }
 
 #endif
