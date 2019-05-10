@@ -21,9 +21,9 @@ int main(int argc, char **argv)
 REAL rand1() { return 2 * (float)rand()/(float)(RAND_MAX) - 1; }
 COMPLEX rand1z() { return COMPLEX(rand1(),rand1()); }
 
-vec4 lorentz_x(REAL eta, vec4 p)
+VEC4 lorentz_x(REAL eta, VEC4 p)
 {
-    vec4 q = p;
+    VEC4 q = p;
     q[0] = cosh(eta) * p[0] + sinh(eta) * p[1];
     q[1] = sinh(eta) * p[0] + cosh(eta) * p[1];
     return q;
@@ -31,7 +31,7 @@ vec4 lorentz_x(REAL eta, vec4 p)
 
 void compute()
 {
-    vec4 p(0, rand1(), rand1(), rand1());
+    VEC4 p(0, rand1(), rand1(), rand1());
     p[0] = sqrt(p[1]*p[1] + p[2]*p[2] + p[3]*p[3]);
 
     int deci_places = 8;
@@ -40,21 +40,21 @@ void compute()
     cout << p << "\n";
     cout << p.norm() << "\n";
 
-    bispinor b(p);
+    BISPINOR b(p);
     cout << b << "\n";
     cout << b.norm() << "\n";
 
-    spinor l(p);
-    bispinor b1(l, conjugate(l));
+    SPINOR l(p);
+    BISPINOR b1(l, conjugate(l));
     cout << b1 << "\n";
     cout << b1.norm() << "\n";
 
-    vec4 q = lorentz_x(10, p);
+    VEC4 q = lorentz_x(10, p);
     cout << q << "\n";
     cout << q.norm() << "\n";
 
-    spinor k(q);
-    bispinor b2(k, conjugate(k));
+    SPINOR k(q);
+    BISPINOR b2(k, conjugate(k));
     cout << b2 << "\n";
     cout << b2.norm() << "\n";
 }

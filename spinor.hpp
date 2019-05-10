@@ -5,16 +5,16 @@
 #include "complex.hpp"
 #include "vec4.hpp"
 
-class spinor
+class SPINOR
 {
     iRRAM::COMPLEX x[2];
 
 public:
 
-    spinor() { x[0] = x[1] = iRRAM::COMPLEX(0); }
-    spinor(iRRAM::COMPLEX x0, iRRAM::COMPLEX x1) { x[0] = x0; x[1] = x1; }
+    SPINOR() { x[0] = x[1] = iRRAM::COMPLEX(0); }
+    SPINOR(iRRAM::COMPLEX x0, iRRAM::COMPLEX x1) { x[0] = x0; x[1] = x1; }
 
-    spinor(vec4 v)
+    SPINOR(VEC4 v)
     {
         iRRAM::REAL theta = acos(v[3]/v[0]);
         iRRAM::REAL phi = atan(v[2]/v[1]);
@@ -26,14 +26,14 @@ public:
     const iRRAM::COMPLEX& operator[](std::size_t idx) const { return x[idx]; }
 };
 
-static iRRAM::orstream& operator<<(iRRAM::orstream& os, const spinor& v)
+static iRRAM::orstream& operator<<(iRRAM::orstream& os, const SPINOR& v)
 {
     return os << "[" << v[0] << ", " << v[1] << "]";
 }
 
-static spinor conjugate(const spinor& s)
+static SPINOR conjugate(const SPINOR& s)
 {
-    return spinor(conjugate(s[0]), conjugate(s[1])); 
+    return SPINOR(conjugate(s[0]), conjugate(s[1])); 
 }
 
 #endif
