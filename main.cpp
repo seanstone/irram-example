@@ -12,6 +12,10 @@ int main(int argc, char **argv)
     srand(time(NULL));
 
     iRRAM_initialize2(&argc, argv);
+
+    int deci_places = 8;
+    cout << setRwidth(deci_places + 8);
+
     iRRAM::exec(compute);
     iRRAM_finalize();
 
@@ -29,32 +33,22 @@ VEC4 lorentz_x(REAL eta, VEC4 p)
     return q;
 }
 
-void compute()
+VEC4 rand_massless()
 {
     VEC4 p(0, rand1(), rand1(), rand1());
     p[0] = sqrt(p[1]*p[1] + p[2]*p[2] + p[3]*p[3]);
+    return p;
+}
 
-    int deci_places = 8;
-    cout << setRwidth(deci_places + 8);
+void compute()
+{
+    VEC4 p = rand_massless();
 
     cout << p << "\n";
     cout << p.norm() << "\n";
 
-    BISPINOR b(p);
+    SPINOR l(p);
+    BISPINOR b(l, conjugate(l));
     cout << b << "\n";
     cout << b.norm() << "\n";
-
-    SPINOR l(p);
-    BISPINOR b1(l, conjugate(l));
-    cout << b1 << "\n";
-    cout << b1.norm() << "\n";
-
-    VEC4 q = lorentz_x(10, p);
-    cout << q << "\n";
-    cout << q.norm() << "\n";
-
-    SPINOR k(q);
-    BISPINOR b2(k, conjugate(k));
-    cout << b2 << "\n";
-    cout << b2.norm() << "\n";
 }
