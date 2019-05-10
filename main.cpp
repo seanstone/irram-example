@@ -17,13 +17,14 @@ int main(int argc, char **argv)
     return 0;
 }
 
+REAL rand1() { return 2 * (float)rand()/(float)(RAND_MAX) - 1; }
+
 void compute()
 {
     vec4 p;
-
-    p[1] = 2 * (float)rand()/(float)(RAND_MAX) - 1;
-    p[2] = 2 * (float)rand()/(float)(RAND_MAX) - 1;
-    p[3] = 2 * (float)rand()/(float)(RAND_MAX) - 1;
+    p[1] = rand1();
+    p[2] = rand1();
+    p[3] = rand1();
     p[0] = sqrt(p[1]*p[1] + p[2]*p[2] + p[3]*p[3]);
 
     int deci_places = 16;
