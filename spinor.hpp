@@ -10,6 +10,9 @@ class spinor
 
 public:
 
+    spinor() { x[0] = x[1] = iRRAM::COMPLEX(0); }
+    spinor(iRRAM::COMPLEX x0, iRRAM::COMPLEX x1) { x[0] = x0; x[1] = x1; }
+
     iRRAM::COMPLEX& operator[](std::size_t idx)       { return x[idx]; }
     const iRRAM::COMPLEX& operator[](std::size_t idx) const { return x[idx]; }
 };

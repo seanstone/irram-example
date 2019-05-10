@@ -31,10 +31,7 @@ vec4 lorentz_x(REAL eta, vec4 p)
 
 void compute()
 {
-    vec4 p;
-    p[1] = rand1();
-    p[2] = rand1();
-    p[3] = rand1();
+    vec4 p(0, rand1(), rand1(), rand1());
     p[0] = sqrt(p[1]*p[1] + p[2]*p[2] + p[3]*p[3]);
 
     int deci_places = 8;
@@ -47,10 +44,6 @@ void compute()
     cout << q << "\n";
     cout << q.norm() << "\n";
 
-    bispinor b;
-    b[0][0] = rand1z();
-    b[0][1] = rand1z();
-    b[1][0] = rand1z();
-    b[1][1] = rand1z();
+    bispinor b(rand1z(), rand1z(), rand1z(), rand1z());
     cout << b << "\n";
 }
