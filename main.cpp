@@ -44,6 +44,7 @@ void compute()
     cout << q << "\n";
     cout << q.norm() << "\n";
 
-    bispinor b(rand1z(), rand1z(), rand1z(), rand1z());
+    bispinor b(p);
     cout << b << "\n";
+    cout << b.norm() << "\n";
 }
