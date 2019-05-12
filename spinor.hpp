@@ -16,9 +16,8 @@ public:
 
     SPINOR(VEC4 v)
     {
-        // Probably problem with acos and atan
-        iRRAM::REAL theta = acos(v[3]/v[0]);
-        iRRAM::REAL phi = atan(v[2]/v[1]);
+        iRRAM::REAL theta = ((v[1]*v[1]+v[2]*v[2])/v[0] >= 0) ? acos(v[3]/v[0]) : (iRRAM::pi()-acos(v[3]/v[0]));
+        iRRAM::REAL phi = atan(v[2]/v[1]) + ((v[1]>=0)?0:iRRAM::pi());
         x[0] = sqrt(2 * v[0]) * cos(theta/2),
         x[1] = sqrt(2 * v[0]) * sin(theta/2) * exp(iRRAM::COMPLEX(0,1) * phi);
     }

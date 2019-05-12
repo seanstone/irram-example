@@ -52,7 +52,7 @@ VEC4 rand_massless()
 void compute()
 {
     MASSLESS a1(rand_massless()), a2(rand_massless()), a3(rand_massless());
-    MASSLESS b1(rotate_x(1,a1.p)), b2(rotate_x(1,a2.p)), b3(rotate_x(1,a3.p));
+    MASSLESS b1(lorentz_x(1,a1.p)), b2(lorentz_x(1,a2.p)), b3(lorentz_x(1,a3.p));
 
     // cout << a1.a << "\n";
     // cout << a1.s << "\n";
@@ -66,6 +66,9 @@ void compute()
 
     cout << ab(a1,a2) * sb(a1,a2) << "\n";
     cout << ab(b1,b2) * sb(b1,b2) << "\n";
+
+    cout << ab(a1,a2) * sb(a1,a2) - ab(b1,b2) * sb(b1,b2) << "\n";
+
     // cout << ab(a1,b1) << "\n";
     // cout << sb(a1,b1) << "\n";
 
