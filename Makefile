@@ -2,10 +2,10 @@ CPPFLAGS += -O2
 CXXFLAGS += -std=c++14
 LDLIBS += -liRRAM -lmpfr
 
-build/example: main.cpp *.hpp
+bin/example: *.cpp
 	mkdir -p $(@D)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< $(LDLIBS) -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ $(LDLIBS) -o $@
 
 .PHONY: clean
 clean:
-	rm -rf build
+	rm -rf build bin
